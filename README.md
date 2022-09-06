@@ -1,4 +1,11 @@
-# What is MyProduct?
+# Notes and Doucment
+
+**备注：** 笔记采用Markdown格式，此project是建立在gitbook之上,可以使用gitbook的拓展。
+[Markdown语法](https://list.yinxiang.com/markdown/eef42447-db3f-48ee-827b-1bb34c03eb83.php)
+
+## Android
+
+* [Debug](android/command.md)
 
 {% hint style="info" %}
 **Good to know:** providing a brief overview of your product and its core use cases is a great place to start with product docs. Your product might seem obvious to you – you made it! However, to others, even folks who are trying your product after reading your site or getting a sales demo, it can still be unclear. This is your chance to clarify your product and set the right expectations!
