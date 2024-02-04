@@ -22,4 +22,13 @@ Activity相关配置通过AndroidManifest.xml Android Studio可以直接打开�
 adb shell dumpsys activity top | grep ACTIVITY
 #当前运行的app
 adb shell dumpsys window | grep  mCurrentFocus
+#from package
+adb shell dumpsys package | grep -i ' + package.name + ' |grep Activity
+```
+
+#### 启动Activity
+
+``` shell
+adb shell am start -n com.example.demo/.ExampleActivity 
+#等同于adb shell am start -n com.example.demo/com.example.demo.ExampleActivity
 ```
