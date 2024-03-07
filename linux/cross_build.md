@@ -46,13 +46,14 @@ mv python Parser/pgen host
 
 编译arm版本python
 
-```shell 
+```shell
 CC=arm-linux-gnueabi-gcc CXX=arm-linux-gnueabi-g++ AR=arm-linux-gnu
 eabi-ar OBJDUMP=arm-linux-gnueabi-objdump STRIP=arm-linux-gnueabi-strip RANLIB=arm-linux-gnueabi-ranlib \
 CONFIG_SITE=config.site ./configure --host=arm-linux-gnueabi --prefix=$HOME/usr/python2.7
 make HOSTPYTHON=host/python HOSTPGEN=host/Parser/pgen HOSTARCH=arm-linux-gnueabi BUILDARCH=86_64-linux-gnu CROSS_COMPILE_TARGET=yes 
 make HOSTPYTHON=host/python HOSTPGEN=host/Parser/pgen CROSS_COMPILE_TARGET=yes install
 ```
+
 编译后会提示缺少的module 需要自己编译对应依赖库
 
 拷贝$HOME/usr/python2.7至arm平台
