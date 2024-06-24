@@ -20,6 +20,6 @@ layout:
 
 * [Debug](readme/android/tiao-shi-xiang-guan.md)
 
-## Chromium
+## [Chromium](readme/chromium/README.md)
 
 ## Linux
