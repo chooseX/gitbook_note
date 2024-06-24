@@ -1,2 +1,0 @@
-# Intercom Integration
-
