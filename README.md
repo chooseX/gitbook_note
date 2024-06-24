@@ -18,7 +18,7 @@ layout:
 
 ## Android
 
-* [Debug](android/command.md)
+* [Debug](readme/android/tiao-shi-xiang-guan.md)
 
 ## Chromium
 
