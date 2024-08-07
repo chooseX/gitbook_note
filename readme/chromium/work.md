@@ -28,6 +28,22 @@
 # web storage
 
 # v8
+v8初始化相关
+third_party/blink/renderer/bindings/core/v8/v8_initializer.cc
+
+third_party/blink/renderer/core/workers/worker_backing_thread.cc
+::InitializeOnBackingThread ... 创建并且初始化 workerv8 isolate
+
+third_party/blink/renderer/controller/blink_initializer.cc
+void Initialize(Platform* platform,
+                mojo::BinderMap* binders,
+                scheduler::WebThreadScheduler* main_thread_scheduler) {
+  DCHECK(binders);
+  Platform::InitializeMainThread(platform, main_thread_scheduler);
+  InitializeCommon(platform, binders);
+  V8Initializer::InitializeMainThread();
+}
+创建并且初始化main thread isolate
 
 # cc
 
