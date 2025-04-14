@@ -20,3 +20,5 @@ chromium 90版本 dist_aar class缺少生成GEN_JNI和R  [相关改动](https://
 缺少icu data
 缺少pak reources
 res生成名字也有错误
+
+3. 安卓版本的适配
