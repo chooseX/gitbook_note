@@ -94,8 +94,60 @@ std::string DevToolsManagerDelegate::GetDiscoveryPageHTML() {
 
 ## other
 
-页面适配
-js接口增加
-网站权限列表对应的文件
+---
 
-``` components/content_settings/core/common/content_settings_types.mojom
+### 页面适配
+
+---
+
+### js接口增加
+
+---
+
+网站权限列表对应的文件
+components/content_settings/core/common/content_settings_types.mojom
+
+---
+
+### coredump问题
+
+90版本webview会遇到这样的coredump
+GrBackendTexture::~GrBackendTexture()
+SkPromiseImageTexture::~SkPromiseImageTexture()
+gpu::SharedImageRepresentationSkiaGL::~SharedImageRepresentationSkiaGL()
+gpu::SharedImageRepresentationSkiaGL::~SharedImageRepresentationSkiaGL()
+viz::ImageContextImpl::~ImageContextImpl()
+
+https://skia-review.googlesource.com/c/skia/+/375201
+https://skia-review.googlesource.com/c/skia/+/487382
+
+chromium修复了很多部分悬空指针的问题在这个问题单
+部分是用raw_ptr规避 90上还未启动
+可以把不使用raw_ptr 修复的方法合入
+https://bugs.chromium.org/p/chromium/issues/detail?id=1291138
+
+DanglingPtr: fix dangling ptr in SharedImageRepresentation:
+https://chromium-review.googlesource.com/c/chromium/src/+/3827433
+
+quic相关的patch
+
+5570148: Fix DanglingUntriaged pointer in QuicChromiumPacketWriter | https://chromium-review.googlesource.com/c/chromium/src/+/5570148 (后续再合入)
+5658194: Fix dangling raw_ptrs in QuicChromiumClientSession | https://chromium-review.googlesource.com/c/chromium/src/+/5658194 (这笔没走到相关逻辑 不合入)
+5570148: Fix DanglingUntriaged pointer in QuicChromiumPacketWriter | https://chromium-review.googlesource.com/c/chromium/src/+/5570148 (后续再合入)
+
+这两笔有所关联
+4570128: Notify QuicPacketWriter that socket has closed | https://chromium-review.googlesource.com/c/chromium/src/+/4570128
+4705611: Add tests for connection migration failure race. | https://chromium-review.googlesource.com/c/chromium/src/+/4705611
+
+5570148: Fix DanglingUntriaged pointer in QuicChromiumPacketWriter | https://chromium-review.googlesource.com/c/chromium/src/+/5570148
+
+5519211: Remove DanglingUntriaged annotation from QuicClientSession | https://chromium-review.googlesource.com/c/chromium/src/+/5519211
+
+这种使用raw_ptr修复的等后续chromium修复后再更改
+DanglingPtr: Fix dangling ptr in HttpStreamRequest
+https://chromium-review.googlesource.com/c/chromium/src/+/3780168
+
+### android字体相关
+
+android 默认会获取 $\underline{/system/fonts/}$ 路径下面的fonts.xml以及字体
+<u>src/third_party/skia/src/ports/SkFontMgr_android.cpp<u>
